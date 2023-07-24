@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha Users</title>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/add-user.png" />
+    <link rel="stylesheet" href="/css/verify.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/jquery/icons.css">
+    <!--===============================================================================================-->
+    <style>
+        .modal-backdrop,
+        .modal {
+            z-index: 0 !important;
+        }
+
+        .site-navbar {
+            z-index: 1;
+        }
+    </style>
+    <link rel="stylesheet" href="/css/loader.css">
+</head>
+
+<body>
+    
+    <div class="loader loader-wrapper d-flex flex-column">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h5 class="text-white loader-text"></h5>
+    </div>
+
+    <header class="site-navbar" role="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <h1 class="mb-0 site-logo"><a href="/" class="text-white logo-text mb-0">Alpha Users</a></h1>
+                </div>
+                <div class="col-6 col-md-6">
+                    <nav class="site-navigation position-relative text-right"
+                        style="display: flex;justify-content: end;" role=" navigation">
+                        <ul class="site-menu js-clone-nav d-lg-block">
+                            <li class="has-children active username-li" style="width: 100%;">
+                                <a><span class="username">My Account</span></a>
+                                <ul class="dropdown arrow-top pull-right userDropdown">
+                            </li>
+                            <li><a class="logout-btn" style="width: 100%;">Log out</a></li>
+                        </ul>
+                        </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <div class="text-container">
+        <div class="title">
+            <div class="main">
+                <h1>Welcome to
+                    <h1>Alpha Users!</h1>
+                </h1>
+            </div>
+            <h3>To get started please verify your email address</h3>
+        </div>
+
+
+        <div class="modal custom" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Verification</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>An email has been sent to your account along with the verification link.<br> If no email is
+                            in your inbox, please log out and try loggin in again.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        $('.modal').modal({
+            backdrop: 'static',
+            keyboard: false
+        })
+        $('.modal').modal('show');
+    </script>
+
+    <!-- Firebase  -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+    <!-- Auth -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="js/constants/constants.js"></script>
+    <script src="js/init/firebase.js"></script>
+
+    <script src="js/utils/loader.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="/js/main/verify.js"></script>
+</body>
+
+</html>

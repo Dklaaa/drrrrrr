@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Alpha Users</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--===============================================================================================-->
+  <link rel="icon" type="image/png" href="images/icons/add-user.png" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="css/util.css" />
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" href="/css/loader.css">
+</head>
+
+<body>
+  <div class="loader loader-wrapper d-flex flex-column">
+    <div class="lds-ellipsis">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <h5 class="text-white loader-text"></h5>
+  </div>
+
+  <div class="limiter">
+    <div class="container-login100">
+      <div class="wrap-login100">
+        <div class="login100-form-title" style="background-image: url(images/bg-01.jpg)">
+          <span class="login100-form-title-1"> Login </span>
+        </div>
+
+        <form class="login100-form validate-form">
+          <h6 class="auth-fail-message">Auth faild</h6>
+          <div class="wrap-input100 validate-input m-b-26" data-validate="Email is required">
+            <span class="label-input100">Email</span>
+            <input class="input100 email" type="email" name="email" placeholder="Enter email" required />
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+            <span class="label-input100">Password</span>
+            <input class="input100 password" type="password" name="pass" placeholder="Enter password" required />
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="flex-sb-m w-full p-b-30">
+            <div class="empty"></div>
+            <div>
+              <a href="" class="txt1" data-toggle="modal" data-target="#reset-password-modal"> Forgot Password? </a>
+            </div>
+          </div>
+
+          <div class="container-login100-form-btn">
+            <button type="submit" class="login100-form-btn loginBtn">Login</button>
+          </div>
+
+          <div class="sign-dir m-t-20">
+            <span class="signup-text"> Don't have an account? </span>
+            <a href="/signup.html">Sign up</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Reset password modal -->
+  <div class="modal fade" id="reset-password-modal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Forgot Password?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span>An email with a reset password link will be sent to you</span>
+          <br>
+          <form id="reset-form" class="needs-validation mt-4" novalidate>
+            <div class="form-group">
+              <label for="email-password-reset">Email</label>
+              <input type="email" class="form-control user-password-reset" id="email-password-reset"
+                placeholder="Your email address" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary send-mail">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Email confirmation modal -->
+  <div class="modal email-confirm-modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="width: 500px;" role="document">
+      <div class="modal-content" style="border: none;">
+        <div class="modal-header conf-modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Email sent successfully</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body conf-modal-body">
+          <h5>Please check your inbox</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--===============================================================================================-->
+  <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/animsition/js/animsition.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/bootstrap/js/popper.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/select2/select2.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/daterangepicker/moment.min.js"></script>
+  <script src="vendor/daterangepicker/daterangepicker.js"></script>
+  <!--===============================================================================================-->
+  <script src="vendor/countdowntime/countdowntime.js"></script>
+  <!--===============================================================================================-->
+
+  <!-- Firebase  -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+  <!-- Auth -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+  <script src="js/constants/constants.js"></script>
+  <script src="js/init/firebase.js"></script>
+
+  <script src="js/utils/loader.js"></script>
+  <script src="js/signup/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api/user.js"></script>
+  <script src="js/utils/form-validate.js"></script>
+  <script src="js/login/login.js"></script>
+</body>
+
+</html>

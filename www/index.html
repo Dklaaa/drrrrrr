@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Alpha Users</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/add-user.png" />
+    <link href="/css/DataTable/css/addons/datatables.min.css" rel="stylesheet">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/jquery/icons.css">
+    <!--===============================================================================================-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/css/loader.css">
+</head>
+
+<body>
+
+    <div class="loader loader-wrapper d-flex flex-column">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h5 class="text-white loader-text">Getting organisations...</h5>
+    </div>
+
+    <header class="site-navbar" role="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <h1 class="mb-0 site-logo"><a href="/" class="text-white logo-text mb-0">Alpha Users</a></h1>
+                </div>
+                <div class="col-6 col-md-6">
+                    <nav class="site-navigation position-relative text-right align-items-center"
+                        style="display: flex;justify-content: end;"" role=" navigation">
+                        <ul class="site-menu js-clone-nav d-lg-block">
+                            <li class="has-children active username-li" style="width: 100%;">
+                                <a><span class="username">My Account</span></a>
+                                <ul class="dropdown arrow-top pull-right userDropdown">
+                                    <li class="logs-dropdown"><a href="/logs.html#create">Logs</a>
+                                    </li>
+                                    <li><a class="logout-btn" style="width: 100%;">Log out</a></li>
+                                    <li><a href="" style="width: 100%;" data-toggle="modal"
+                                            data-target="#reset-password-modal">Change
+                                            password</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <a href="/chat.html" class="m-0 bg-white py-1 px-2 ml-2" style="border-radius: 20px;"><i class="far fa-comment p-1"
+                                style="color: rgb(57, 136, 130); font-size: 18px;"></i></a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+
+    <div class="hero hero-md">
+        <div class="table-container container">
+            <table id="dtDesktop" class="bg-transparent table table-sm" cellspacing="0" width="100%">
+                <thead class="mt-2">
+                    <tr>
+                        <th class="th-sm d-none">Card</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody bg-transparent">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Mobile table -->
+    <div class="hero hero-sm mx-2">
+        <div class="table-container container">
+            <table id="dtMobile" class="table table-sm" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th class="th-sm d-none">Card</th>
+                    </tr>
+                </thead>
+                <tbody class="tableBodyMobile">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal user-modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="width: 500px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="user-modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="user-form" class="needs-validation" novalidate autocomplete="off">
+                        <div class="form-group">
+                            <label for="exampleInputText1">Username</label>
+                            <div class="fixed-text">
+                                <input type="text" value="support" class="form-control user-name" autocomplete="off"
+                                    id="exampleInputText1" aria-describedby="textHelper" placeholder="Enter username"
+                                    required>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">ARB</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control user-password" autocomplete="new-password"
+                                id="exampleInputPassword1" placeholder="Password" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary create-user-btn">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job Modal -->
+    <div class="modal job-modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="width: 500px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="job-modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="job-form" class="needs-validation" novalidate>
+                        <div class="form-group">
+                            <label for="exampleInputText3">Template name </label>
+                            <div class="fixed-text">
+                                <input type="text" class="form-control template-name" id="exampleInputText3"
+                                    aria-describedby="textHelper" placeholder="Enter template name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputText4">Organization Code</label>
+                            <input type="text" class="form-control organization-code" id="exampleInputText4"
+                                placeholder="Enter Organization Code" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputText5">User Code</label>
+                            <input type="text" class="form-control user-code" id="exampleInputText5"
+                                placeholder="Enter User Code" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputText5">Import Type</label>
+                            <select class="form-control import-type" id="exampleInputText6">
+                                <option value="Shitje/Blerje">Shitje/Blerje</option>
+                                <option value="Veprime kliente/furnitore">Veprime kliente/furnitore</option>
+                                <option value="Veprime arka/banka">Veprime arka/banka</option>
+                            </select>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary create-job-btn">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts Modal -->
+    <div class="modal script-modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="width: 500px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="script-modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="script-form" class="needs-validation" novalidate>
+                        <div class="form-group">
+                            <label for="scriptsOptions">Script</label>
+                            <select class="form-control import-type" id="scriptsOptions">
+                                <option value="0">Percaktimi i cmimeve</option>
+                                <option value="1">Fatura e kthimit/Dokuemnti i ruajt me te kuqe</option>
+                                <option value="2">Nuk eksportohen Klientet</option>
+                                <option value="3">Nuk eksportohen Artikujt</option>
+                                <option value="4">String or binary data would be truncated</option>
+                                <option value="5">Master Key(Raporte me error Internal server error)</option>
+                            </select>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary create-script-btn">Execute</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation modal -->
+    <div class="confirmation-modal-container">
+        <div class="modal confirmation-modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content" style="border: none;">
+                    <div class="modal-header conf-modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">User created successfully</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body conf-modal-body">
+                        <h5>arb</h5><i class="fa fa-copy"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Reset password modal -->
+    <div class="modal fade" id="reset-password-modal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Change Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span>A password reset link will be sent to the email associated with this account.</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary send-mail">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal error-modal user-error-modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="border: none;">
+                <div class="modal-header error-modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Failed to create user</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 1;">
+                        <span aria-hidden="true" style="color: #ffffff">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Email confirmation modal -->
+    <div class="modal email-confirm-modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="width: 500px;" role="document">
+            <div class="modal-content" style="border: none;">
+                <div class="modal-header conf-modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Email sent successfully</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body conf-modal-body">
+                    <h5>Please check your inbox</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Restart confirmation modal -->
+    <div class="modal restart-confirm-modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="width: 500px;" role="document">
+            <div class="modal-content" style="border: none;">
+                <div class="modal-header conf-modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Restart</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body conf-modal-body">
+                    <h5>This instance was restarted successfully.</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal error-modal restart-error-modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="border: none;">
+                <div class="modal-header error-modal-header">
+                    <h5 class="modal-title mr-4" id="exampleModalLongTitle">Failed to restart instance</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 1;">
+                        <span aria-hidden="true" style="color: #ffffff">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/jquery/jquery.sticky.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="css/DataTable/js/addons/datatables.min.js"></script>
+
+    <!-- Utils -->
+    <script src="js/utils/loader.js"></script>
+    <script src="js/utils/form-validate.js"></script>
+    <script src="js/signup/main.js"></script>
+    <script src="js/utils/unique.js"></script>
+    <script src="js/utils/copy.js"></script>
+    <script src="js/utils/date-formatter.js"></script>
+
+    <!-- Firebase  -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+    <!-- Auth -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+    <script src="js/constants/constants.js"></script>
+    <script src="js/init/firebase.js"></script>
+    <script src="js/auth.js"></script>
+
+    <script src="js/api/user.js"></script>
+    <script src="js/api/organisations.js"></script>
+    <script src="js/api/scripts.js"></script>
+    <script src="js/api/logs.js"></script>
+
+    <script src="js/main/index.js"></script>
+</body>
+
+</html>

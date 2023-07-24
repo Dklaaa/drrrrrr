@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Alpha Users</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/add-user.png" />
+    <link href="/css/DataTable/css/addons/datatables.min.css" rel="stylesheet">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/jquery/icons.css">
+    <!--===============================================================================================-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <style>
+        #dtBasicExample_wrapper {
+            width: 100%;
+        }
+    </style>
+
+    <link rel="stylesheet" href="/css/loader.css">
+</head>
+
+<body>
+
+    <div class="loader loader-wrapper d-flex flex-column">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h5 class="text-white loader-text"></h5>
+    </div>
+
+    <header class="site-navbar" role="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <h1 class="mb-0 site-logo"><a href="/" class="text-white logo-text mb-0">Alpha Users</a></h1>
+                </div>
+                <div class="col-6 col-md-6">
+                    <nav class="site-navigation position-relative text-right"
+                        style="display: flex;justify-content: end;"" role=" navigation">
+                        <ul class="site-menu js-clone-nav d-lg-block">
+                            <li class="has-children active username-li" style="width: 100%;">
+                                <a><span class="username">My Account</span></a>
+                                <ul class="dropdown arrow-top pull-right userDropdown">
+                                    <li class="logs-dropdown"><a href="/logs.html#create"
+                                            style="width: fit-content;">Logs</a>
+                                    </li>
+                                    <li><a class="logout-btn" style="width: 100%;">Log out</a></li>
+                                    <li><a href="" style="width: 100%;" data-toggle="modal"
+                                            data-target="#reset-password-modal">Change
+                                            password</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <div class="hero">
+
+        <div class="table-container container">
+            <div class="table-tabs">
+                <p class="table-tab"><a class="restart-tab" href="#restart">Restart</a></p>
+                <p>/</p>
+                <p class="table-tab"><a class="create-tab" href="#create">User</a></p>
+                <p>/</p>
+                <p class="table-tab"><a class="job-tab" href="#job">Job</a></p>
+            </div>
+
+            <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th class="th-sm" style="padding: 20px;">Logs</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- Reset password modal -->
+    <div class="modal fade" id="reset-password-modal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Change Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span>A password reset link will be sent to the email associated with this account.</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary send-mail">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Email confirmation modal -->
+    <div class="modal email-confirm-modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="width: 500px;" role="document">
+            <div class="modal-content" style="border: none;">
+                <div class="modal-header conf-modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Email sent successfully</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body conf-modal-body">
+                    <h5>Please check your inbox</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/jquery/jquery.sticky.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="css/DataTable/js/addons/datatables.min.js"></script>
+    <script src="js/utils/loader.js"></script>
+    <script src="js/utils/import-type-mapper.js"></script>
+
+    <!-- Firebase  -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+    <!-- Auth -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+    <script src="js/constants/constants.js"></script>
+    <script src="js/init/firebase.js"></script>
+    <script src="js/utils/date-formatter.js"></script>
+
+    <script src="js/utils/form-validate.js"></script>
+    <script src="js/signup/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/api/user.js"></script>
+    <script src="js/api/logs.js"></script>
+    <script src="js/logs/logs.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Alpha Users</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/add-user.png" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="/css/loader.css">
+</head>
+
+<body>
+
+    <div class="loader loader-wrapper d-flex flex-column">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h5 class="text-white loader-text"></h5>
+    </div>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-form-title" style="background-image: url(images/bg-01.jpg)">
+                    <span class="login100-form-title-1"> Sign Up </span>
+                </div>
+
+                <form class="login100-form validate-form">
+                    <h6 class="auth-fail-message">Auth faild</h6>
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="Name is required">
+                        <span class="label-input100">Name</span>
+                        <input class="input100 name" type="text" name="username" placeholder="Enter name" required />
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="Email is required">
+                        <span class="label-input100">Email</span>
+                        <input class="input100 email" type="email" name="email" placeholder="Enter email" required
+                            pattern="(^[A-Za-z0-9._%+-]+@imb.al$)|(^[A-Za-z0-9._%+-]+@imbpartner.al$)" />
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+                        <span class="label-input100">Password</span>
+                        <input class="input100 password" type="password" name="pass" placeholder="Enter password"
+                            required />
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="flex-sb-m w-full p-b-30">
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn signupBtn">Sign up</button>
+                    </div>
+
+                    <div class="sign-dir m-t-20">
+                        <span class="signup-text"> Already have an account? </span>
+                        <a href="/login.html">Log in</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <!-- Firebase  -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+    <!-- Auth -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+    <script src="js/constants/constants.js"></script>
+    <script src="js/init/firebase.js"></script>
+
+    <script src="js/utils/loader.js"></script>
+    <script src="js/signup/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/api/user.js"></script>
+    <script src="js/signup/signup.js"></script>
+</body>
+
+</html>
